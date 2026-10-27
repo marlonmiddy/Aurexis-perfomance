@@ -1,13 +1,11 @@
 /**
  * Single source of truth for the canonical origin.
  *
- * The previous value (`https://aurexis.vercel.app`) resolves to an unrelated
- * site, which pointed every canonical and Open Graph URL at a third party.
- * Set NEXT_PUBLIC_SITE_URL once a custom domain is live and nothing else
- * needs to change.
+ * Defaults to the production domain so canonicals, the sitemap and robots
+ * never point at a preview deployment. NEXT_PUBLIC_SITE_URL can override it.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aurexis-theta.vercel.app'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aurexis.co.za'
 ).replace(/\/$/, '')
 
 export const SITE_NAME = 'Aurexis Surface Transformations'

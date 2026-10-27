@@ -3,6 +3,7 @@ import { notFound, permanentRedirect } from 'next/navigation'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteNav } from '@/components/site-nav'
 import { StudioPage } from '@/components/studio-page'
+import { routes } from '@/lib/seo'
 import { getStudio, studios } from '@/lib/site-data'
 
 export function generateStaticParams() {
@@ -22,6 +23,7 @@ export async function generateMetadata({
   return {
     title: `${studio.title} | Aurexis`,
     description: studio.overview,
+    alternates: { canonical: routes.studio(studio.slug) },
     openGraph: {
       title: `${studio.title} | Aurexis`,
       description: studio.line,
