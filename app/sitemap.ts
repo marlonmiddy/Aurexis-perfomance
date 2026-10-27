@@ -9,17 +9,18 @@ import { studios } from '@/lib/site-data'
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 
-  return [
+  const entries: MetadataRoute.Sitemap = [
     { url: absoluteUrl(routes.home), changeFrequency: 'monthly', priority: 1 },
     ...studios.map((studio) => ({
       url: absoluteUrl(routes.studio(studio.slug)),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     })),
-    { url: absoluteUrl(routes.about), changeFrequency: 'yearly', priority: 0.8 },
     { url: absoluteUrl(routes.contact), changeFrequency: 'yearly', priority: 0.8 },
     { url: absoluteUrl(routes.privacy), changeFrequency: 'yearly', priority: 0.3 },
     { url: absoluteUrl(routes.terms), changeFrequency: 'yearly', priority: 0.3 },
     { url: absoluteUrl(routes.cookies), changeFrequency: 'yearly', priority: 0.3 },
-  ].map((entry) => ({ ...entry, lastModified }))
+  ]
+
+  return entries.map((entry) => ({ ...entry, lastModified }))
 }
